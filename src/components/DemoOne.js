@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import AriaModal from 'react-aria-modal';
-import { confirmable } from 'react-confirm';
 import { confirm } from '../util/confirm';
 
 class DemoOne extends Component {
@@ -33,10 +32,8 @@ class DemoOne extends Component {
       console.log("Closing the model !");
       confirm('Are you sure?').then((result) => {
         console.log('proceed!') ;
-        console.log(result);
       }, (result) => {
         console.log('cancel!');
-        console.log(result);
       });
   }
 
@@ -65,7 +62,7 @@ class DemoOne extends Component {
           <div id="demo-one-modal" className="">
             <div className='model-title'>
               <h3 className='pe-title'>Create a Question</h3>
-              <button type='button' className='pe-icon--remove-lg-18' onClick={this.closeModel}>Close dialog</button>
+              <button type='button' className='pe-icon--remove-lg-18' onClick={this.closeModel}>Close Modal</button>
             </div>
             <div className="modal-body">
               <p>
@@ -111,4 +108,4 @@ DemoOne.propTypes = {
   enableEscape: PropTypes.bool,
 }
 
-export default confirmable(DemoOne);
+export default DemoOne;
