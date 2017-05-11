@@ -30,7 +30,11 @@ class DemoOne extends Component {
 
   closeModel () {
       console.log("Closing the model !");
-      confirm('Are you sure?').then((result) => {
+      confirm('Do you want to delete this?',
+      { title: 'Would you like to remove this item from the list?',
+      okLabbel: 'Yess',
+      cancelLabel: 'Nooo' })
+      .then((result) => {
         console.log('proceed!') ;
       }, (result) => {
         console.log('cancel!');
