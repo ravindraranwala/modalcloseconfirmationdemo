@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import Modal from 'react-bootstrap/lib/Modal'
 import Button from 'react-bootstrap/lib/Button'
 import { confirmable } from 'react-confirm';
 
-class Confirmation extends React.Component {
+class Confirmation extends Component {
   render() {
     const {
       okLabbel = 'OK',
