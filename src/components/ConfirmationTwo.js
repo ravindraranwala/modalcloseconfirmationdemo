@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import AriaModal from 'react-aria-modal';
 import { confirm } from '../util/confirm';
+import { confirmable } from 'react-confirm';
 
-class DemoOne extends Component {
+class ConfirmationTwo extends Component {
   constructor(props) {
     super(props);
 
@@ -13,7 +14,6 @@ class DemoOne extends Component {
     this.activateModal = this.activateModal.bind(this);
     this.deactivateModal = this.deactivateModal.bind(this);
     this.getApplicationNode = this.getApplicationNode.bind(this);
-    this.closeModel = this.closeModel.bind(this);
   }
 
   activateModal = () => {
@@ -26,19 +26,6 @@ class DemoOne extends Component {
 
   getApplicationNode = () => {
     return document.getElementById('application');
-  }
-
-  closeModel () {
-      console.log("Closing the model !");
-      confirm('Do you want to delete this?',
-      { title: 'Would you like to remove this item from the list?',
-      okLabbel: 'Yes',
-      cancelLabel: 'No' })
-      .then((result) => {
-        console.log('proceed!') ;
-      }, (result) => {
-        console.log('cancel!');
-      });
   }
 
   render() {
@@ -63,44 +50,30 @@ class DemoOne extends Component {
           getApplicationNode={this.getApplicationNode}
           underlayStyle={{ paddingTop: '2em' }}
         >
-          <div id="demo-one-modal" className="">
+          <div id="test-modal" className="background">
             <div className='model-title'>
-              <h3 className='pe-title'>Create a Question</h3>
-              <button type='button' className='pe-icon--remove-lg-18' onClick={this.closeModel}>Close Modal</button>
+              <h3 className='pe-title'>{title}</h3>
             </div>
             <div className="modal-body">
-              <p>
-                Here is a modal
-                {' '}
-                <a href="#">with</a>
-                {' '}
-                <a href="#">some</a>
-                {' '}
-                <a href="#">focusable</a>
-                {' '}
-                parts.
-              </p>
+              {confirmation}
             </div>
             <footer className="modal-footer">
-              <button id="demo-one-deactivate" onClick={this.deactivateModal}>
-                deactivate modal
-              </button>
+              <button className="btn btn-info" onClick={cancel}>{cancelLabel}</button>
+              <button className='btn btn-danger' onClick={proceed}>{okLabbel}</button>
             </footer>
           </div>
         </AriaModal>;
 
     return (
       <div>
-        <button onClick={this.activateModal}>
-          activate modal
-        </button>
         {modal}
       </div>
     );
   }
+
 }
 
-DemoOne.propTypes = {
+ConfirmationTwo.propTypes = {
   okLabbel: PropTypes.string,
   cancelLabel: PropTypes.string,
   title: PropTypes.string,
@@ -112,4 +85,4 @@ DemoOne.propTypes = {
   enableEscape: PropTypes.bool,
 }
 
-export default DemoOne;
+export default confirmable(ConfirmationTwo);
