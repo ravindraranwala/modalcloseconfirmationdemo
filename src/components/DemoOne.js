@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import AriaModal from 'react-aria-modal';
+import { connect } from 'react-redux';
 import { confirm } from '../util/confirm';
+import { onConfirmation } from '../actions/index';
 
 class DemoOne extends Component {
   constructor(props) {
@@ -14,6 +16,7 @@ class DemoOne extends Component {
     this.deactivateModal = this.deactivateModal.bind(this);
     this.getApplicationNode = this.getApplicationNode.bind(this);
     this.closeModel = this.closeModel.bind(this);
+    this.confirmationCallback = this.confirmationCallback.bind(this);
   }
 
   activateModal = () => {
@@ -28,12 +31,21 @@ class DemoOne extends Component {
     return document.getElementById('application');
   }
 
+  confirmationCallback() {
+    console.log("Ok callback is executed !");
+    this.props.onConfirmation(false);
+  }
+
   closeModel () {
       console.log("Closing the model !");
       confirm('Do you want to delete this?',
-      { title: 'Would you like to remove this item from the list?',
-      okLabbel: 'Yes',
-      cancelLabel: 'No' })
+      {
+        title: 'Would you like to remove this item from the list?',
+        okLabbel: 'Yes',
+        cancelLabel: 'No',
+        proceed: this.confirmationCallback,
+        cancel: this.confirmationCallback
+       })
       .then((result) => {
         console.log('proceed!') ;
       }, (result) => {
@@ -112,4 +124,4 @@ DemoOne.propTypes = {
   enableEscape: PropTypes.bool,
 }
 
-export default DemoOne;
+export default connect(null, { onConfirmation })(DemoOne);

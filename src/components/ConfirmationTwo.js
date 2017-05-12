@@ -85,4 +85,9 @@ ConfirmationTwo.propTypes = {
   enableEscape: PropTypes.bool,
 }
 
+
+function mapStateToProps(state){
+  return { modalActive: state.confirmation.modalActive };
+}
+
 export default confirmable(ConfirmationTwo);

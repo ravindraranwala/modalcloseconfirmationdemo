@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import ConfirmationReducer from './confirmation_reducer';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  confirmation: ConfirmationReducer
 });
 
 export default rootReducer;
