@@ -8,7 +8,7 @@ class ConfirmationTwo extends Component {
     super(props);
 
     this.state = {
-      modalActive: false
+      modalActive: true
     }
 
     this.activateModal = this.activateModal.bind(this);
