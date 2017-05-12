@@ -44,7 +44,8 @@ class DemoOne extends Component {
         okLabbel: 'Yes',
         cancelLabel: 'No',
         proceed: this.confirmationCallback,
-        cancel: this.confirmationCallback
+        cancel: this.confirmationCallback,
+        isModalActive: this.props.isModalActive
        })
       .then((result) => {
         console.log('proceed!') ;
