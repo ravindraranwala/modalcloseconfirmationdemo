@@ -37,6 +37,7 @@ class DemoOne extends Component {
   }
 
   closeModel () {
+      this.props.onConfirmation(true);
       console.log("Closing the model !");
       confirm('Do you want to delete this?',
       {

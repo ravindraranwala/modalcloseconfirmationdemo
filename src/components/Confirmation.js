@@ -7,21 +7,9 @@ class Confirmation extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      modalActive: true
-    }
-
     this.activateModal = this.activateModal.bind(this);
     this.deactivateModal = this.deactivateModal.bind(this);
     this.getApplicationNode = this.getApplicationNode.bind(this);
-  }
-
-  activateModal = () => {
-    this.setState({ modalActive: true });
-  }
-
-  deactivateModal = () => {
-    this.setState({ modalActive: false });
   }
 
   getApplicationNode = () => {
