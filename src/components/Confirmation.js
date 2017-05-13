@@ -5,9 +5,23 @@ import { confirmable } from 'react-confirm';
 
 class Confirmation extends Component {
   constructor(props) {
-    console.log("constructing confirmation..." + prop);
     super(props);
+
+    this.state = {
+      modalActive: true
+    }
+
+    this.activateModal = this.activateModal.bind(this);
+    this.deactivateModal = this.deactivateModal.bind(this);
     this.getApplicationNode = this.getApplicationNode.bind(this);
+  }
+
+  activateModal = () => {
+    this.setState({ modalActive: true });
+  }
+
+  deactivateModal = () => {
+    this.setState({ modalActive: false });
   }
 
   getApplicationNode = () => {
@@ -32,7 +46,7 @@ class Confirmation extends Component {
         <AriaModal
           titleText="demo one"
           onExit={this.deactivateModal}
-          mounted={this.props.modalActive}
+          mounted={this.state.modalActive}
           initialFocus="#demo-one-deactivate"
           getApplicationNode={this.getApplicationNode}
           underlayStyle={{ paddingTop: '2em' }}
@@ -70,7 +84,6 @@ Confirmation.propTypes = {
   cancel: PropTypes.func,      // called when cancel button is clicked.
   dismiss: PropTypes.func,     // called when backdrop is clicked or escaped.
   enableEscape: PropTypes.bool,
-  modalActive: PropTypes.bool.isRequired
 }
 
 export default confirmable(Confirmation);
