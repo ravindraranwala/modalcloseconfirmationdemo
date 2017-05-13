@@ -1,7 +1,7 @@
-import ConfirmationTwo from '../components/ConfirmationTwo';
+import Confirmation from '../containers/ConnectedConfirmation';
 import { createConfirmation } from 'react-confirm';
 
-const defaultConfirmation = createConfirmation(ConfirmationTwo);
+const defaultConfirmation = createConfirmation(Confirmation);
 
 export function confirm(confirmation, options = {}) {
   return defaultConfirmation({ confirmation, ...options });
