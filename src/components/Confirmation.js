@@ -6,9 +6,6 @@ import { confirmable } from 'react-confirm';
 class Confirmation extends Component {
   constructor(props) {
     super(props);
-
-    this.activateModal = this.activateModal.bind(this);
-    this.deactivateModal = this.deactivateModal.bind(this);
     this.getApplicationNode = this.getApplicationNode.bind(this);
   }
 
@@ -34,7 +31,7 @@ class Confirmation extends Component {
         <AriaModal
           titleText="demo one"
           onExit={this.deactivateModal}
-          mounted={this.state.modalActive}
+          mounted={this.props.modalActive}
           initialFocus="#demo-one-deactivate"
           getApplicationNode={this.getApplicationNode}
           underlayStyle={{ paddingTop: '2em' }}
