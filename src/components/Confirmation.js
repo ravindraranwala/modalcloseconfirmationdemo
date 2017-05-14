@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import AriaModal from 'react-aria-modal';
-import { confirm } from '../util/confirm';
-import { confirmable } from 'react-confirm';
+import { connect } from 'react-redux';
 
 class Confirmation extends Component {
   constructor(props) {
@@ -71,4 +70,9 @@ Confirmation.propTypes = {
   enableEscape: PropTypes.bool,
 }
 
-export default confirmable(Confirmation);
+const mapStateToProps = (state) => {
+  console.log("Calling mapStateToProps here!" + state.confirmation.modalActive);
+  return { modalActive: state.confirmation.modalActive };
+}
+
+export default connect(mapStateToProps)(Confirmation);

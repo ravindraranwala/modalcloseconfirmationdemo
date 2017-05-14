@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import AriaModal from 'react-aria-modal';
 import { connect } from 'react-redux';
-import { confirm } from '../util/confirm';
 import { onConfirmation } from '../actions/index';
+import Confirmation from './Confirmation'
 
 class DemoOne extends Component {
   constructor(props) {
@@ -39,19 +39,8 @@ class DemoOne extends Component {
   closeModel () {
       this.props.onConfirmation(true);
       console.log("Closing the model !");
-      confirm('Do you want to delete this?',
-      {
-        title: 'Would you like to remove this item from the list?',
-        okLabbel: 'Yes',
-        cancelLabel: 'No',
-        proceed: this.confirmationCallback,
-        cancel: this.confirmationCallback
-       })
-      .then((result) => {
-        console.log('proceed!') ;
-      }, (result) => {
-        console.log('cancel!');
-      });
+      return <Confirmation confirmation="Do you want to delete this?" title='Would you like to remove this item from the list?'
+        okLabbel= 'Yes'  cancelLabel= 'No' proceed={this.confirmationCallback} cancel= {this.confirmationCallback} />
   }
 
   render() {
