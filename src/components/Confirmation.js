@@ -6,14 +6,19 @@ class Confirmation extends Component {
   constructor(props) {
     super(props);
     this.getApplicationNode = this.getApplicationNode.bind(this);
+    this.deactivateModal = this.deactivateModal.bind(this);
   }
 
   getApplicationNode = () => {
     return document.getElementById('application');
   }
 
+  deactivateModal = () => {
+    console.log("deactivating");
+  }
+
   render() {
-    console.log("rendering confirmation....");
+    console.log("rendering confirmation...." + this.props.modalActive);
     const {
      okLabbel = 'OK',
      cancelLabel = 'Cancel',
@@ -70,9 +75,4 @@ Confirmation.propTypes = {
   enableEscape: PropTypes.bool,
 }
 
-const mapStateToProps = (state) => {
-  console.log("Calling mapStateToProps here!" + state.confirmation.modalActive);
-  return { modalActive: state.confirmation.modalActive };
-}
-
-export default connect(mapStateToProps)(Confirmation);
+export default (Confirmation);

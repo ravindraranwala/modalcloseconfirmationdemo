@@ -1,6 +1,6 @@
 import { ON_CONFIRM } from '../actions';
 
-const INITIAL_STATE = {modalActive: true};
+const INITIAL_STATE = {modalActive: false};
 export default function(state = INITIAL_STATE, action) {
   console.log(action);
   switch (action.type) {

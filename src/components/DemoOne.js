@@ -32,15 +32,13 @@ class DemoOne extends Component {
   }
 
   confirmationCallback() {
-    console.log("Ok callback is executed !");
+    console.log("Callback is executed !");
     this.props.onConfirmation(false);
   }
 
   closeModel () {
       this.props.onConfirmation(true);
       console.log("Closing the model !");
-      return <Confirmation confirmation="Do you want to delete this?" title='Would you like to remove this item from the list?'
-        okLabbel= 'Yes'  cancelLabel= 'No' proceed={this.confirmationCallback} cancel= {this.confirmationCallback} />
   }
 
   render() {
@@ -97,6 +95,8 @@ class DemoOne extends Component {
           activate modal
         </button>
         {modal}
+        <Confirmation confirmation="Do you want to delete this?" title='Would you like to remove this item from the list?'
+            okLabbel= 'Yes'  cancelLabel= 'No' modalActive={this.props.modalActive} proceed={this.confirmationCallback} cancel= {this.confirmationCallback} />
       </div>
     );
   }
@@ -114,4 +114,9 @@ DemoOne.propTypes = {
   enableEscape: PropTypes.bool,
 }
 
-export default connect(null, { onConfirmation })(DemoOne);
+
+const mapStateToProps = (state) => {
+  console.log("Calling mapStateToProps here!" + state.confirmation.modalActive);
+  return { modalActive: state.confirmation.modalActive };
+}
+export default connect(mapStateToProps, { onConfirmation })(DemoOne);
