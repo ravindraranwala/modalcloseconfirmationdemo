@@ -1,3 +1,7 @@
 .background {
     background-color: white
 }
+
+.curved-edge {
+    border-radius: 7px;
+}

@@ -40,7 +40,7 @@ class Confirmation extends Component {
           getApplicationNode={this.getApplicationNode}
           underlayStyle={{ paddingTop: '2em' }}
         >
-          <div id="test-modal" className="background">
+          <div id="test-modal" className="background curved-edge">
             <div className='model-title'>
               <h3 className='pe-title'>{title}</h3>
             </div>

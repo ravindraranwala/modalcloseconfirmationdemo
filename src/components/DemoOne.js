@@ -63,23 +63,27 @@ class DemoOne extends Component {
           getApplicationNode={this.getApplicationNode}
           underlayStyle={{ paddingTop: '2em' }}
         >
-          <div id="demo-one-modal" className="">
+          <div id="demo-one-modal" className="background curved-edge">
             <div className='model-title'>
-              <h3 className='pe-title'>Create a Question</h3>
-              <button type='button' className='pe-icon--remove-lg-18' onClick={this.closeModel}>Close Modal</button>
+              <h3 className='pe-title'>Create a Post</h3>
             </div>
             <div className="modal-body">
-              <p>
-                Here is a modal
-                {' '}
-                <a href="#">with</a>
-                {' '}
-                <a href="#">some</a>
-                {' '}
-                <a href="#">focusable</a>
-                {' '}
-                parts.
-              </p>
+              <form>
+                <div className="form-group">
+                  <label>Title</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div  className="form-group">
+                  <label>Categories</label>
+                  <input type="text" className="form-control" />
+                </div>
+                <div  className="form-group">
+                  <label>Content</label>
+                  <textarea className="form-control" />
+                </div>
+                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type='button' className='btn btn-danger' onClick={this.closeModel}>Cancel</button>
+              </form>
             </div>
             <footer className="modal-footer">
               <button id="demo-one-deactivate" onClick={this.deactivateModal}>
